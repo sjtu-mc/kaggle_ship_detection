@@ -2,10 +2,10 @@
 This is an implementation of the Kaggle competition  [Airbus Ship Detection Challenge | Kaggle](https://www.kaggle.com/c/airbus-ship-detection) . 
 
 The project include:
- * the training process with Unet or FPN, which is implemented by [GitHub - qubvel/segmentation_models: Segmentation models with pretrained backbones. Keras.](https://github.com/qubvel/segmentation_models)
- * the data augmentations implemented by [GitHub - albu/albumentations: fast image augmentation library and easy to use wrapper around other libraries](https://github.com/albu/albumentations)
+ * training process with Unet or FPN, which is implemented by [GitHub - qubvel/segmentation_models: Segmentation models with pretrained backbones. Keras.](https://github.com/qubvel/segmentation_models)
+ * data augmentations implemented by [GitHub - albu/albumentations: fast image augmentation library and easy to use wrapper around other libraries](https://github.com/albu/albumentations)
  * cycle learning rate (CLR) implemented by [GitHub - bckenstler/CLR](https://github.com/bckenstler/CLR)
- * the test procedure with TTA and the linear search of the best threshold
+ * test procedure with TTA and the linear search of the best threshold
 ## Recent Update
 ::2019.2.22::: first commit
 ## Dependencies
