@@ -7,7 +7,7 @@ The project include:
  * cycle learning rate (CLR) implemented by [GitHub - bckenstler/CLR](https://github.com/bckenstler/CLR)
  * test procedure with TTA and the linear search of the best threshold
 ## Recent Update
-::2019.2.22::: first commit
+::2019.2.22:: first commit
 ## Dependencies
 * python==3.6.7
 * Keras==2.1.2
