@@ -20,7 +20,6 @@ from skimage.util.montage import montage2d as montage
 from sklearn.model_selection import train_test_split
 
 from clr_callback import CyclicLR
-from data_augument import train_aug, valid_aug
 from keras.callbacks import (EarlyStopping, ModelCheckpoint, ReduceLROnPlateau,
                              TensorBoard)
 from keras.optimizers import SGD, Adam
