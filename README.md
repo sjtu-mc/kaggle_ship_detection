@@ -8,6 +8,7 @@ The project include:
  * test procedure with TTA and the linear search of the best threshold
 ## Recent Update
 * 2019.2.22 first commit
+* 2019.3.2 modify the data generate, change the `demo_test` filetype from `.ipynb` to `.py`, change the training procedure 
 ## Dependencies
 * python==3.6.7
 * Keras==2.1.2
@@ -16,4 +17,4 @@ The project include:
 ### Training
 Run `./demo_train.py`, then you will get the segmentation model in the `“output_” + current time` fold. 
 ### Test
-Run  `./demo_test.ipynb` with the Jupyter notebook, finally you will get the submission file `submission.csv` in the `“output_” + current time` fold.
+Run  `./demo_test.py` with the Jupyter notebook, finally you will get the submission file `submission.csv` in the `“output_” + current time` fold.
