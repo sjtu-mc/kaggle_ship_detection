@@ -52,25 +52,25 @@ unique_img_ids['has_ship'] = unique_img_ids['ships'].map(lambda x: 1.0 if x>0 el
 unique_img_ids['has_ship_vec'] = unique_img_ids['has_ship'].map(lambda x: [x])
 masks.drop(['ships'], axis=1, inplace=True)
 
-# dfWtShipOnly = masks.drop(masks.index[masks.EncodedPixels.apply(lambda x: not isinstance(x, str)).tolist()])
-# dfWtShipOnly["rleAndPosition"] = dfWtShipOnly.EncodedPixels.apply(lambda x: ' '.join(x.split(" ")[1::2])
-#                                                                             + ' ' + ' '.join(
-#     [str(int(hor) % 256) for hor in x.split(" ")[0::2]]) if (isinstance(x, str)) else x)
+dfWtShipOnly = masks.drop(masks.index[masks.EncodedPixels.apply(lambda x: not isinstance(x, str)).tolist()])
+dfWtShipOnly["rleAndPosition"] = dfWtShipOnly.EncodedPixels.apply(lambda x: ' '.join(x.split(" ")[1::2])
+                                                                            + ' ' + ' '.join(
+    [str(int(hor) % 256) for hor in x.split(" ")[0::2]]) if (isinstance(x, str)) else x)
 
-# # List in a new column all the ImageId where the 'rleAndPosition' occurs.
-# dfWtShipOnly["allSameRle"] = dfWtShipOnly["rleAndPosition"].apply(
-#     lambda x: dfWtShipOnly.ImageId[dfWtShipOnly["rleAndPosition"] == x].tolist())
+# List in a new column all the ImageId where the 'rleAndPosition' occurs.
+dfWtShipOnly["allSameRle"] = dfWtShipOnly["rleAndPosition"].apply(
+    lambda x: dfWtShipOnly.ImageId[dfWtShipOnly["rleAndPosition"] == x].tolist())
 
-# alreadyDropped = []
-# dfWtShipOnlyUniqueCopy = dfWtShipOnlyUnique
-# for itemKeeped in dfWtShipOnlyUnique.iteritems():
-#     if not itemKeeped[0] in alreadyDropped:
-#         for itemToCheck in dfWtShipOnlyUnique.iteritems():
-#             if itemToCheck[0] in itemKeeped[1] and not itemToCheck[0] in alreadyDropped and itemToCheck[0] != \
-#                     itemKeeped[0]:
-#                 dfWtShipOnlyUnique = dfWtShipOnlyUnique.drop(itemToCheck[0])
-#                 alreadyDropped = alreadyDropped + [itemToCheck[0]]
-# dfWtShipOnlyUnique.to_csv('dfWtShipOnlyUnique.csv')
+alreadyDropped = []
+dfWtShipOnlyUniqueCopy = dfWtShipOnlyUnique
+for itemKeeped in dfWtShipOnlyUnique.iteritems():
+    if not itemKeeped[0] in alreadyDropped:
+        for itemToCheck in dfWtShipOnlyUnique.iteritems():
+            if itemToCheck[0] in itemKeeped[1] and not itemToCheck[0] in alreadyDropped and itemToCheck[0] != \
+                    itemKeeped[0]:
+                dfWtShipOnlyUnique = dfWtShipOnlyUnique.drop(itemToCheck[0])
+                alreadyDropped = alreadyDropped + [itemToCheck[0]]
+dfWtShipOnlyUnique.to_csv('dfWtShipOnlyUnique.csv')
 
 dfWtShip = pd.read_csv('dfWtShipOnlyUnique.csv')
 dfWtShip.columns = ['ImageId','DuplicateId']
