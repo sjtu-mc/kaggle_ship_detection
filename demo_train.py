@@ -60,6 +60,9 @@ dfWtShipOnly["rleAndPosition"] = dfWtShipOnly.EncodedPixels.apply(lambda x: ' '.
 dfWtShipOnly["allSameRle"] = dfWtShipOnly["rleAndPosition"].apply(
     lambda x: dfWtShipOnly.ImageId[dfWtShipOnly["rleAndPosition"] == x].tolist())
 
+# Group the 'rleAndPosition' by ImageId
+dfWtShipOnlyUnique = dfWtShipOnly.groupby('ImageId')['allSameRle'].apply(lambda x: set(x.sum()))
+
 alreadyDropped = []
 dfWtShipOnlyUniqueCopy = dfWtShipOnlyUnique
 for itemKeeped in dfWtShipOnlyUnique.iteritems():
