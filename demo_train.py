@@ -20,7 +20,6 @@ from skimage.util.montage import montage2d as montage
 from sklearn.model_selection import train_test_split
 
 from clr_callback import CyclicLR
-from data_augument import train_aug, valid_aug
 from keras.callbacks import (EarlyStopping, ModelCheckpoint, ReduceLROnPlateau,
                              TensorBoard)
 from keras.optimizers import SGD, Adam
@@ -61,6 +60,8 @@ dfWtShipOnly["rleAndPosition"] = dfWtShipOnly.EncodedPixels.apply(lambda x: ' '.
 dfWtShipOnly["allSameRle"] = dfWtShipOnly["rleAndPosition"].apply(
     lambda x: dfWtShipOnly.ImageId[dfWtShipOnly["rleAndPosition"] == x].tolist())
 
+# Group the 'rleAndPosition' by ImageId
+dfWtShipOnlyUnique = dfWtShipOnly.groupby('ImageId')['allSameRle'].apply(lambda x: set(x.sum()))
 alreadyDropped = []
 dfWtShipOnlyUniqueCopy = dfWtShipOnlyUnique
 for itemKeeped in dfWtShipOnlyUnique.iteritems():
